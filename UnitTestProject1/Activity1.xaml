@@ -1,0 +1,129 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="UnitTestProject1.Activity1" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="UnitTestProject1.Activity1_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:os="clr-namespace:OpenQA.Selenium;assembly=WebDriver"
+ xmlns:s="clr-namespace:SeleniumActivityLibrary;assembly=SeleniumActivityLibrary"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>OpenQA.Selenium</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.TestPlatform.TestFramework</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>WebDriver</AssemblyReference>
+      <AssemblyReference>WebDriver.Support</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>SeleniumActivityLibrary</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>UnitTestProject1</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="os:IWebDriver" Name="driver" />
+      <Variable x:TypeArguments="os:IWebElement" Name="element" />
+    </Sequence.Variables>
+    <s:StartWebBrowser ImplicitWait="10">
+      <s:StartWebBrowser.Driver>
+        <OutArgument x:TypeArguments="os:IWebDriver">
+          <mca:CSharpReference x:TypeArguments="os:IWebDriver">driver</mca:CSharpReference>
+        </OutArgument>
+      </s:StartWebBrowser.Driver>
+      <sap2010:WorkflowViewState.IdRef>StartWebBrowser_2</sap2010:WorkflowViewState.IdRef>
+    </s:StartWebBrowser>
+    <s:GoToURL sap2010:WorkflowViewState.IdRef="GoToURL_1" Url="https://www.google.com/">
+      <s:GoToURL.Driver>
+        <InArgument x:TypeArguments="os:IWebDriver">
+          <mca:CSharpValue x:TypeArguments="os:IWebDriver">driver</mca:CSharpValue>
+        </InArgument>
+      </s:GoToURL.Driver>
+    </s:GoToURL>
+    <s:FindElement By="Name" sap2010:WorkflowViewState.IdRef="FindElement_1" Target="q">
+      <s:FindElement.Driver>
+        <InArgument x:TypeArguments="os:IWebDriver">
+          <mca:CSharpValue x:TypeArguments="os:IWebDriver">driver</mca:CSharpValue>
+        </InArgument>
+      </s:FindElement.Driver>
+      <s:FindElement.Element>
+        <OutArgument x:TypeArguments="os:IWebElement">
+          <mca:CSharpReference x:TypeArguments="os:IWebElement">element</mca:CSharpReference>
+        </OutArgument>
+      </s:FindElement.Element>
+    </s:FindElement>
+    <s:SendKeys sap2010:WorkflowViewState.IdRef="SendKeys_1" Keys="GitHub">
+      <s:SendKeys.Element>
+        <InArgument x:TypeArguments="os:IWebElement">
+          <mca:CSharpValue x:TypeArguments="os:IWebElement">element</mca:CSharpValue>
+        </InArgument>
+      </s:SendKeys.Element>
+    </s:SendKeys>
+    <s:SubmitElement sap2010:WorkflowViewState.IdRef="SubmitElement_1">
+      <s:SubmitElement.Element>
+        <InArgument x:TypeArguments="os:IWebElement">
+          <mca:CSharpValue x:TypeArguments="os:IWebElement">element</mca:CSharpValue>
+        </InArgument>
+      </s:SubmitElement.Element>
+    </s:SubmitElement>
+    <Delay sap2010:WorkflowViewState.IdRef="Delay_1">
+      <InArgument x:TypeArguments="x:TimeSpan">
+        <mca:CSharpValue x:TypeArguments="x:TimeSpan">new TimeSpan(0, 0, 3)</mca:CSharpValue>
+      </InArgument>
+    </Delay>
+    <s:QuitWebBrowser sap2010:WorkflowViewState.IdRef="QuitWebBrowser_1">
+      <s:QuitWebBrowser.Driver>
+        <InArgument x:TypeArguments="os:IWebDriver">
+          <mca:CSharpValue x:TypeArguments="os:IWebDriver">driver</mca:CSharpValue>
+        </InArgument>
+      </s:QuitWebBrowser.Driver>
+    </s:QuitWebBrowser>
+    <sads:DebugSymbol.Symbol>d1lDOlxVc2Vyc1x5b3VoZWlvZ2lub1xzb3VyY2VccmVwb3NcU2VsZW5pdW1BY3Rpdml0eUxpYnJhcnlcVW5pdFRlc3RQcm9qZWN0MVxBY3Rpdml0eTEueGFtbBMyA20OAgEBNwU+GQIBID8FRRECARtGBVEVAgETUgVYEgIBDlkFXxcCAQpgBWQNAgEGZQVrGAIBAjoLOlwCASE/QD9ZAgEfQgtCVAIBHEZVRlgCARpOC05eAgEXSQtJVAIBFFULVVYCARBSQ1JLAgEPXAtcVgIBC2IJYl4CAQdoC2hUAgED</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="StartWebBrowser_2" sap:VirtualizedContainerService.HintSize="200,79" />
+      <sap2010:ViewStateData Id="GoToURL_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FindElement_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="SendKeys_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="SubmitElement_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="QuitWebBrowser_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="222,575">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="UnitTestProject1.Activity1_1" sap:VirtualizedContainerService.HintSize="262,655" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
